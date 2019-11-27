@@ -28,8 +28,9 @@ class App extends Component {
         {this.state.items.map(item => {
           return (
             <div>
+              <h1>Event:</h1>
               <p>{item.summary}</p>
-              <p>{item.start.date}</p>
+              <p>{item.start.date ? item.start.date : item.start.dateTime}</p>
               <p>{item.end.date}</p>
             </div>
           );
