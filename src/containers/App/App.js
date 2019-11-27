@@ -19,16 +19,6 @@ class App extends Component {
       .then(data => {
         this.setState({ items: data.items });
         console.log(data.items);
-        console.log(data.items[4].start);
-        // let items = data.items.map(item => {
-        //   let id = new Date(item.start.date);
-        //   let startDate = item.start.date;
-        // });
-        // return (
-        //   <div key={item.id}>
-        //     <p>{item.startDate}</p>
-        //   </div>
-        // );
       });
   }
 
@@ -36,9 +26,14 @@ class App extends Component {
     return (
       <div className="container">
         {this.state.items.map(item => {
-          return <p>{item.summary}</p>;
+          return (
+            <div>
+              <p>{item.summary}</p>
+              <p>{item.start.date}</p>
+              <p>{item.end.date}</p>
+            </div>
+          );
         })}
-        <div className="body">hgchgfcgh</div>
       </div>
     );
   }
