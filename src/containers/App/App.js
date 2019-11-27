@@ -17,8 +17,10 @@ class App extends Component {
         return results.json();
       })
       .then(data => {
-        this.setState({ items: data.items });
-        console.log(data.items);
+        let items = data.items.sort((a, b) => {
+          return new Date(a.start.date) - new Date(b.start.date);
+        });
+        this.setState({ items: items });
       });
   }
 
@@ -27,11 +29,10 @@ class App extends Component {
       <div className="container">
         {this.state.items.map(item => {
           return (
-            <div>
-              <h1>Event:</h1>
-              <p>{item.summary}</p>
+            <div key={item.id}>
+              <h1>{item.summary}</h1>
               <p>{item.start.date ? item.start.date : item.start.dateTime}</p>
-              <p>{item.end.date}</p>
+              <p>{item.end.date ? item.end.date : item.end.dateTime}</p>
             </div>
           );
         })}
