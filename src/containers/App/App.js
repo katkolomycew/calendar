@@ -49,7 +49,7 @@ class App extends Component {
         />
         {this.state.filteredItems.map(item => {
           return (
-            <div key={item.id}>
+            <div className="item" key={item.id}>
               <h1>{item.summary}</h1>
               <p>{item.start.date ? item.start.date : item.start.dateTime}</p>
               <p>{item.end.date ? item.end.date : item.end.dateTime}</p>
